@@ -1,0 +1,226 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200&display=swap");
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+:root {
+  --bg: #262626;
+  --light: #f0d9b5;
+  --dark: #b58863;
+  --text: ;
+}
+body {
+  background: var(--bg);
+  display: flex;
+  flex-wrap: wrap-reverse;
+}
+
+/* text section */
+section {
+  padding-top: 10px;
+  width: 50%;
+  color: var(--light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+section > h1 {
+  font-size: 3rem;
+}
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+.btn-container > button {
+  background: none;
+  outline: none;
+  border: 1px solid var(--dark);
+  color: var(--light);
+  padding: 20px clamp(20px, 3vw, 50px);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: 500ms;
+}
+.btn-container > button:hover {
+  background: var(--light);
+  color: var(--dark);
+}
+/* creating the board */
+.board {
+  position: relative;
+  display: flex;
+  margin-top: 50px;
+}
+.square {
+  width: clamp(40px, 5vw, 1000px);
+  height: clamp(40px, 5vw, 1000px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--bg);
+  font-size: 2rem;
+  transition: padding 500ms ease-in;
+}
+.dark {
+  background: var(--dark);
+}
+.light {
+  background: var(--light);
+}
+[data-x],
+[data-y] {
+  position: relative;
+}
+/* Numbers Poisition on the board */
+[data-x*="1"][data-y*="1"]::before,
+[data-x*="1"][data-y*="2"]::before,
+[data-x*="1"][data-y*="3"]::before,
+[data-x*="1"][data-y*="4"]::before,
+[data-x*="1"][data-y*="5"]::before,
+[data-x*="1"][data-y*="6"]::before,
+[data-x*="1"][data-y*="7"]::before,
+[data-x*="1"][data-y*="8"]::before {
+  position: absolute;
+  top: 0;
+  left: 1px;
+  font-size: 1dvw;
+}
+/* Letters Position on the board */
+[data-x*="1"][data-y*="1"]::after,
+[data-x*="2"][data-y*="1"]::after,
+[data-x*="3"][data-y*="1"]::after,
+[data-x*="4"][data-y*="1"]::after,
+[data-x*="5"][data-y*="1"]::after,
+[data-x*="6"][data-y*="1"]::after,
+[data-x*="7"][data-y*="1"]::after,
+[data-x*="8"][data-y*="1"]::after {
+  position: absolute;
+  bottom: 0;
+  right: 1px;
+  font-size: 1dvw;
+}
+/* numbers Colors and contnet */
+[data-x*="1"][data-y*="1"]::before {
+  content: "1";
+  color: var(--light);
+}
+[data-x*="1"][data-y*="2"]::before {
+  content: "2";
+  color: var(--dark);
+}
+[data-x*="1"][data-y*="3"]::before {
+  content: "3";
+  color: var(--light);
+}
+[data-x*="1"][data-y*="4"]::before {
+  content: "4";
+  color: var(--dark);
+}
+[data-x*="1"][data-y*="5"]::before {
+  content: "5";
+  color: var(--light);
+}
+[data-x*="1"][data-y*="6"]::before {
+  content: "6";
+  color: var(--dark);
+}
+[data-x*="1"][data-y*="7"]::before {
+  content: "7";
+  color: var(--light);
+}
+[data-x*="1"][data-y*="8"]::before {
+  content: "8";
+  color: var(--dark);
+}
+/* Letters Colors and content */
+[data-x*="1"][data-y*="1"]::after {
+  content: "a";
+  color: var(--light);
+}
+[data-x*="2"][data-y*="1"]::after {
+  content: "b";
+  color: var(--dark);
+}
+[data-x*="3"][data-y*="1"]::after {
+  content: "c";
+  color: var(--light);
+}
+[data-x*="4"][data-y*="1"]::after {
+  content: "d";
+  color: var(--dark);
+}
+[data-x*="5"][data-y*="1"]::after {
+  content: "e";
+  color: var(--light);
+}
+[data-x*="6"][data-y*="1"]::after {
+  content: "f";
+  color: var(--dark);
+}
+[data-x*="7"][data-y*="1"]::after {
+  content: "g";
+  color: var(--light);
+}
+[data-x*="8"][data-y*="1"]::after {
+  content: "h";
+  color: var(--dark);
+}
+/* DOM Configiration */
+#knight {
+  background-image: url("../resources/knight.svg");
+  position: absolute;
+  background-repeat: no-repeat;
+  width: clamp(40px, 5vw, 1000px);
+  height: clamp(40px, 5vw, 1000px);
+  top: 0%;
+  display: flex;
+  background-position: center;
+  transition: top 500ms ease-in, right 500ms ease-in, transform 500ms ease-in;
+}
+#end_pos {
+  width: 100%;
+  height: 100%;
+  background: #ff6666;
+}
+.visited {
+  background-color: #dab79b76;
+}
+
+/* Responsive Configiration */
+@media screen and (width < 1204px) {
+  body {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+  }
+  section {
+    padding-top: 30px;
+    width: 100%;
+  }
+  section > h1 {
+    font-size: 2rem;
+  }
+  .btn-container {
+    padding: 20px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  .btn-container > button {
+    padding: 0;
+    width: clamp(120px, 3vw, 150px);
+    height: clamp(50px, 3vw, 75px);
+  }
+  .board {
+    width: fit-content;
+    justify-content: center;
+  }
+  .square {
+    font-size: 1.5rem;
+  }
+}
