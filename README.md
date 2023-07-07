@@ -1,6 +1,6 @@
 # Knights-Travails
 
-![Project Demo](./resources/demovid.gif)
+![Project Demo](./resources/demovid.gif)(https://yotamofri.github.io/Knights-Travails/)
 
 ## Description
 
