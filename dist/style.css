@@ -173,7 +173,7 @@ section > h1 {
 }
 /* DOM Configiration */
 #knight {
-  background-image: url("../resources/knight.svg");
+  background-image: url("https://raw.githubusercontent.com/YotamOfri/Knights-Travails/fd34f4c8fed9af3971c59aa0d980246b68f472f2/resources/knight.svg");
   position: absolute;
   background-repeat: no-repeat;
   width: clamp(40px, 5vw, 1000px);
