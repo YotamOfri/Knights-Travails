@@ -1,6 +1,8 @@
 import { knightMoves } from "./KnightMoves";
 import { StringToList } from "./StringToList";
 const board = document.querySelector(".board");
+
+// animation div creation
 // Setting up the Knight Button and SVG
 const knight_placement_button = document.querySelector("#knight-btn");
 const knight = document.createElement("div");
@@ -9,6 +11,9 @@ knight.setAttribute("id", "knight");
 // Knight Placement Button Function
 knight_placement_button.addEventListener("click", () => {
   board.style.cursor = "pointer";
+  if (document.querySelector(".animation"))
+    document.querySelector(".animation").classList.remove("animation");
+  knight_placement_button.classList.add("animation");
   // removes any eventlistiners form the board
   board.removeEventListener("click", borad_click_end);
   // add the EventListenter
@@ -16,6 +21,7 @@ knight_placement_button.addEventListener("click", () => {
 });
 // function Create Knight
 function board_click_knight(event) {
+  knight_placement_button.classList.remove("animation");
   let pos_x = 8 - event.target.dataset.x;
   let pos_y = 8 - event.target.dataset.y;
   knight.style.right = pos_x * 12.5 + "%";
@@ -32,6 +38,9 @@ end_pos_canvs.setAttribute("id", "end_pos");
 const end_pos_button = document.querySelector("#end-place-btn");
 end_pos_button.addEventListener("click", () => {
   board.style.cursor = "pointer";
+  if (document.querySelector(".animation"))
+    document.querySelector(".animation").classList.remove("animation");
+  end_pos_button.classList.add("animation");
   // removes any eventlistiners form the board
   board.removeEventListener("click", board_click_knight);
   // add the EventListenter
@@ -39,6 +48,7 @@ end_pos_button.addEventListener("click", () => {
 });
 // function End Pos
 function borad_click_end(event) {
+  end_pos_button.classList.remove("animation");
   if (event.target.id === "knight")
     event.target.offsetParent.append(end_pos_canvs);
   else event.target.append(end_pos_canvs);
@@ -51,6 +61,8 @@ start_move_btn.addEventListener("click", start_move_function);
 
 // function start Move
 function start_move_function() {
+  if (document.querySelector(".animation"))
+    document.querySelector(".animation").classList.remove("animation");
   if (document.querySelector("#knight") && document.querySelector("#end_pos")) {
     let start_square_x = 8 - Math.round(parseInt(knight.style.right) / 12.5);
     let start_square_y = 8 - Math.round(parseInt(knight.style.top) / 12.5);
@@ -60,6 +72,11 @@ function start_move_function() {
       [parseInt(start_square_x), parseInt(start_square_y)],
       [parseInt(end_square_x), parseInt(end_square_y)]
     );
+    let starting_Place = document.querySelector(
+      `[data-x="${start_square_x}"][data-y="${start_square_y}"]`
+    );
+    starting_Place.innerText = 0;
+    starting_Place.classList.add("visited");
     let path = result.path + `[${end_square_x},${end_square_y}]`;
     let ListMoves = StringToList(path);
     let delay = 500;
@@ -103,6 +120,8 @@ clear_board_btn.addEventListener("click", ClearBoard);
 
 // function Clear board
 function ClearBoard() {
+  if (document.querySelector(".animation"))
+    document.querySelector(".animation").classList.remove("animation");
   if (board.querySelector("#knight")) board.querySelector("#knight").remove();
   if (board.querySelector("#end_pos")) board.querySelector("#end_pos").remove();
   // looping over each square
