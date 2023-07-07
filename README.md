@@ -1,7 +1,10 @@
 # Knights-Travails
 
-![Project Demo](./resources/demovid.gif)[website](https://yotamofri.github.io/Knights-Travails/)
-
+<div style="display: flex; align-items: center;">
+  <a href="https://yotamofri.github.io/Knights-Travails/">
+    <img src="./resources/demovid.gif" alt="Project Demo" width="400px">
+  </a>
+</div>
 ## Description
 
 This project is a web-based chessboard application that calculates the shortest path for a knight to move from a start position to an end position on the board. It visualizes the path and displays the number of moves required.
